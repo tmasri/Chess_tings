@@ -1,0 +1,47 @@
+
+PIECE MOVEMENT RULES:
+ - pieces:
+    - king
+    - queen
+    - knight
+    - rook
+    - bishop
+    - pawn
+ 
+ -king:
+   - can move in any direction
+      - horizontal
+      - vertical
+      - diagonal
+   - can only move one space
+   - can switch with rook
+   
+ - queen:
+   - can move in any direction
+   - can move any number of spaces
+   
+ - knight:
+   - can only move 3 spaces L shaped
+      - 2 forward 1 over
+      - 1 forward 2 over
+   - can jump pieces
+
+ - rook:
+   - can move horizontal or vertical
+   - can move any number of spaces in those directions
+   - castling: can switch with kings position
+      - this only works if neither of them moved
+ 
+ - bishop:
+   - can only move diagonally
+   - can move any number of spaces
+ 
+ - pawn:
+   - can only move forward
+   - can only move one space
+   - can move 2 spaces only on first turn
+   - can move diagonally for kill
+   - interception(aunpersaun): the first move thing
+   - can be upgraded(to anything) if reaches the end of the board
+
+
