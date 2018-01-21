@@ -20,32 +20,34 @@ public class Board {
         this.numW = 16;
         
         // fill up black team
-        for (int i = 0; i < board.length; i++) {
-            board[1][i] = new Pawn(new Position(1,i), Team.B);
-        }
+//        board[3][6] = new Pawn(new Position(3,6), Team.B);
+//        for (int i = 0; i < board.length; i++) {
+//            board[1][i] = new Pawn(new Position(1,i), Team.B);
+//        }
         
-        board[0][0] = new Rook(new Position(0,0), Team.B); // rook
-        board[0][1] = new Knight(new Position(0,1), Team.B); // knight
-        board[0][2] = new Bishop(new Position(0,2), Team.B); // bishop
-        board[0][3] = new King(new Position(0,3), Team.B); // king
-        board[0][4] = new Queen(new Position(0,4), Team.B); // queen
-        board[0][5] = new Bishop(new Position(0,5), Team.B); // bishop
-        board[0][6] = new Knight(new Position(0,6), Team.B); // knight
+        board[7][5] = new Rook(new Position(7,5), Team.B); // rook
+//        board[0][1] = new Knight(new Position(0,1), Team.B); // knight
+        board[4][4] = new Bishop(new Position(4,4), Team.B); // bishop
+//        board[0][3] = new King(new Position(0,3), Team.B); // king
+//        board[0][4] = new Queen(new Position(0,4), Team.B); // queen
+//        board[0][5] = new Bishop(new Position(0,5), Team.B); // bishop
+//        board[0][6] = new Knight(new Position(0,6), Team.B); // knight
         board[0][7] = new Rook(new Position(0,7), Team.B); // rook
         
         // fill up white team 
-        for (int i = 0; i < board.length; i++) {
-            board[6][i] = new Pawn(new Position(6,i), Team.W);
-        }
+//        board[4][6] = new Pawn(new Position(4,6), Team.W);
+//        for (int i = 0; i < board.length; i++) {
+//            board[6][i] = new Pawn(new Position(6,i), Team.W);
+//        }
         
-        board[7][0] = new Rook(new Position(7,0), Team.W); // rook
-        board[7][1] = new Knight(new Position(7,1), Team.W); // knight
-        board[7][2] = new Bishop(new Position(7,2), Team.W); // bishop
-        board[7][3] = new King(new Position(7,3), Team.W); // king
-        board[7][4] = new Queen(new Position(7,4), Team.W); // queen
-        board[7][5] = new Bishop(new Position(7,5), Team.W); // bishop
-        board[7][6] = new Knight(new Position(7,6), Team.W); // knight
-        board[7][7] = new Rook(new Position(7,7), Team.W); // rook
+//        board[7][0] = new Rook(new Position(7,0), Team.W); // rook
+//        board[7][1] = new Knight(new Position(7,1), Team.W); // knight
+//        board[7][2] = new Bishop(new Position(7,2), Team.W); // bishop
+        board[7][7] = new King(new Position(7,7), Team.W); // king
+//        board[7][4] = new Queen(new Position(7,4), Team.W); // queen
+//        board[7][5] = new Bishop(new Position(7,5), Team.W); // bishop
+//        board[7][6] = new Knight(new Position(7,6), Team.W); // knight
+//        board[7][7] = new Rook(new Position(7,7), Team.W); // rook
         
     }
     

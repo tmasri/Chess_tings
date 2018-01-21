@@ -1,25 +1,111 @@
 package chess_tings;
 
-import chess_tings.ai.AlphaBeta;
 import chess_tings.board.*;
 import java.util.Scanner;
 
 public class GameController {
     
     private Controller control;
-    private AlphaBeta ai;
     
     public GameController() {
         this.control = new Controller();
-        this.ai = new AlphaBeta();
     }
     
     public void start() {
         
         Team turn = Team.W;
         boolean game = true;
+        boolean ai;
+        this.control.printBoard();
+        Scanner in = new Scanner(System.in);
+        int difficulty = getInput(in);
         
-        System.out.println("Enter difficulty level 2 - 5 (Tree Depth):");
+        if (difficulty == 0) ai = false;
+        else ai = true;
+        
+        while (game) {
+            
+            if (turn == Team.B) {
+                // human or ai
+                System.out.println("Blacks turn");
+                turn = Team.W;
+            } else {
+                // human
+                System.out.println("Whites turn");
+                if (!gameOver(turn)) {
+                    
+                } else {
+                    game = false;
+                }
+                turn = Team.B;
+                game = false;
+            }
+            
+        }
+        
+    }
+    
+    /*
+    Checks if user is in Checkmate, Stalemate, or neither
+    returns true if Checkmate or Stalemate
+    returns false if neither
+    */
+    private boolean gameOver(Team t) {
+        
+        System.out.println("is game over");
+        if (!this.control.isCheck(t)) {
+            System.out.println("not in check");
+            if (this.control.isStaleMate(t)) {
+                System.out.println("is stale");
+                print("YOU ARE IN STALEMATE","GAME OVER");
+                return true;
+            }
+        } else if (this.control.isCheckMate(t)) {
+            System.out.println("is check");
+            if (t == Team.B) System.out.println("COMPUTER IS THE WINNER");
+            else System.out.println("YOU ARE THE WINNER");
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
+    /*
+    Gets user input to decide if user is playing against
+    Human or AI
+    returns 0 if playing against Human
+    returns value between 2 - 5 is playing against AI
+    */
+    private int getInput(Scanner in) {
+        
+        print("Enter 1 to play against a human player");//,
+//                "or 2 to play against computer");
+        
+        int check = 0;//in.nextInt();
+        
+        if (check == 2) {
+            
+            print("Enter a number between 2 and 5",
+                    "to select your difficulty level");
+            check = in.nextInt();
+            while (check < 2 || check > 5) {
+                print("Please enter a value between 2 - 5");
+                check = in.nextInt();
+            }
+            return check;
+            
+        }
+        
+        return 0;
+        
+    }
+    
+    private void other() {
+        
+        
+        Team turn = Team.W;
+        boolean game = true;
         Scanner in = new Scanner(System.in);
         String difficulty = in.nextLine();
         String line, piece, p;
@@ -33,14 +119,10 @@ public class GameController {
             if (turn == Team.B) {
                 // AIs turn
                 System.out.println("AIs Move:");
-                String aiChoice = this.ai.getMove(this.control.getBoard(),difficulty);
-                turn = doLogic(aiChoice,turn);
+//                String aiChoice = this.ai.getMove(this.control.getBoard(),difficulty);
+//                turn = doLogic(aiChoice,turn);
             } else {
-                if (this.control.isStaleMate(turn)) {
-                    System.out.println("YOU ARE IN STALEMATE");
-                    System.out.println("GAME OVER");
-                    game = false;
-                } else if (!this.control.isCheck(turn)) {
+                if (!this.control.isCheck(turn)) {
                     line = in.nextLine();
                     if (line.equals("-1")) break;
                     if (!(piece = this.control.parsePiece(line)).equals("")) {
@@ -82,8 +164,7 @@ public class GameController {
                             turn = doLogic(p,turn);
                         }
                     } else {
-                        if (turn == Team.B) System.out.println("COMPUTER IS THE WINNER");
-                        else System.out.println("YOU ARE THE WINNER");
+                        
                         game = false;
                     }
                 }
@@ -97,24 +178,21 @@ public class GameController {
         if (control.parse(command)) {
             if (control.doMove(t)) {
                 if (t == Team.B) {
-                    System.out.println("Whites Move: ");
-                    System.out.println("Which piece do you want to move?");
+                    print("Whites Move: ","Which piece do you want to move?");
                     t = Team.W;
                 } else {
                     t = Team.B;
                 }
             } else {
-                System.out.println("Move not legal");
+                print("Move not legal");
                 if (t == Team.W) {
-                    System.out.println("Whites Move: ");
-                    System.out.println("Which piece do you want to move?");
+                    print("Whites Move: ","Which piece do you want to move?");
                 }
             }
         } else {
-            System.out.println("spot selected is empty");
+            print("spot selected is empty");
             if (t == Team.W) {
-                System.out.println("Whites Move: ");
-                System.out.println("Which piece do you want to move?");
+                print("Whites Move: ","Which piece do you want to move?");
             }
         }
         
@@ -122,11 +200,11 @@ public class GameController {
         
     }
     
-    private void print(String str1, String str2, String str3) {
+    private void print(String... str) {
         
-        if (!str1.equals("")) System.out.println(str1);
-        if (!str2.equals("")) System.out.println(str2);
-        if (!str3.equals("")) System.out.println(str3);
+        for (String s : str) {
+            System.out.println(s);
+        }
         
     }
     

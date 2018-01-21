@@ -72,7 +72,7 @@ public class Controller {
         chooseKing(t);
         int r = this.selectedPiece.getRow();
         int c = this.selectedPiece.getCol();
-        
+        System.out.println("controllers check");
         return this.move.isCheck(t,r,c);
         
     }
@@ -83,6 +83,7 @@ public class Controller {
     public boolean isCheckMate(Team t) {
         
         chooseKing(t);
+        System.out.println("checking if checkmate");
         if (this.move.kingMoveSize(this.selectedPiece, t) == 0) return true;
         return false;
         
@@ -96,6 +97,7 @@ public class Controller {
         
         // if king has at least 1 move
         // but has no legal moves
+        System.out.println("checking is stalemate");
         
         ArrayList<Piece> allPieces = this.move.getAllPieces(t);
         Position position;

@@ -251,6 +251,14 @@ public class Move {
         if (t == Team.B) t2 = Team.W;
         else t2 = Team.B;
         
+        // dont check this
+        System.out.println("opponent size = " + opponent.size());
+        for (Piece o: opponent) {
+            System.out.println("Piece is "+o.getType());
+        }
+        System.out.println("");
+        // dont check this
+        
         ArrayList<Position> moves;
         for (Piece p: getPieces(t2)) {
             if (p.getType().equals("Knight")) {

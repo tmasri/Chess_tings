@@ -1,0 +1,9 @@
+
+MoveChecker
+- try to give methods better names
+- try to merge getPieces and getAllPieces
+- make sure king doesnt go into check in getPossibleMoves
+- try to merge getPossibleMoves and getKingsMoves
+- if hit teams piece before opponent in getKingOpponent, break out of loop
+- when doing move undomove, take a copy of board, do move, destroy copy (removes the need to do and undo move)
+- make sure note works in getPossibleMoves
